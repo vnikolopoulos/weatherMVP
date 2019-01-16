@@ -1,0 +1,49 @@
+{
+  "id": "a2de810d-ce9b-7338-e4e0-d006001c85fa",
+  "name": "weatherMVP",
+  "timestamp": 1547667531535,
+  "requests": [
+    {
+      "collectionId": "a2de810d-ce9b-7338-e4e0-d006001c85fa",
+      "id": "098b5f64-57dd-db2e-7400-b9456b674299",
+      "name": "Temperature in USA",
+      "description": "",
+      "url": "http://localhost:8080/US",
+      "method": "GET",
+      "headers": "",
+      "data": [],
+      "dataMode": "params",
+      "timestamp": 0,
+      "responses": [],
+      "version": 2
+    },
+    {
+      "collectionId": "a2de810d-ce9b-7338-e4e0-d006001c85fa",
+      "id": "3fde1f9b-724f-7ee8-371e-ba2dc44d1aad",
+      "name": "Wrong country code",
+      "description": "",
+      "url": "http://localhost:8080/FAIL",
+      "method": "GET",
+      "headers": "",
+      "data": [],
+      "dataMode": "params",
+      "timestamp": 0,
+      "responses": [],
+      "version": 2
+    },
+    {
+      "collectionId": "a2de810d-ce9b-7338-e4e0-d006001c85fa",
+      "id": "e87fc6c3-0189-74f0-c6c6-115e8065da63",
+      "name": "Temperature in Greece",
+      "description": "",
+      "url": "http://localhost:8080/gr",
+      "method": "GET",
+      "headers": "",
+      "data": [],
+      "dataMode": "params",
+      "timestamp": 0,
+      "responses": [],
+      "version": 2
+    }
+  ]
+}
