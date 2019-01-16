@@ -1,0 +1,215 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+    <title>Coverage Report :: GeonamesProperties</title>
+    <style type="text/css">
+        @import "../../.css/coverage.css";
+    </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+    <div class="breadCrumbs">
+        [ <a href="../../index.html">all classes</a> ]
+        [ <a href="../index.html">demo.properies</a> ]
+    </div>
+
+    <h1>Coverage Summary for Class: GeonamesProperties (demo.properies)</h1>
+
+    <table class="coverageStats">
+
+        <tr>
+            <th class="name">Class</th>
+            <th class="coverageStat
+">
+                Method, %
+            </th>
+            <th class="coverageStat
+">
+                Line, %
+            </th>
+        </tr>
+        <tr>
+            <td class="name">GeonamesProperties</td>
+            <td class="coverageStat">
+  <span class="percent">
+    53.8%
+  </span>
+                <span class="absValue">
+    (7/ 13)
+  </span>
+            </td>
+            <td class="coverageStat">
+  <span class="percent">
+    68.4%
+  </span>
+                <span class="absValue">
+    (13/ 19)
+  </span>
+            </td>
+        </tr>
+        <tr>
+            <td class="name">GeonamesProperties$$EnhancerBySpringCGLIB$$53588e5</td>
+        </tr>
+        <tr>
+            <td class="name">GeonamesProperties$$EnhancerBySpringCGLIB$$b7b70aaa</td>
+        </tr>
+        <tr>
+            <td class="name">GeonamesProperties$MockitoMock$359820123</td>
+        </tr>
+        <tr>
+            <td class="name">GeonamesProperties$MockitoMock$359820123$auxiliary$eJgqxPwK</td>
+        </tr>
+        <tr>
+            <td class="name">GeonamesProperties$MockitoMock$359820123$auxiliary$eNDx04Go</td>
+        </tr>
+        <tr>
+            <td class="name">GeonamesProperties$MockitoMock$359820123$auxiliary$EOAyNxi5</td>
+        </tr>
+        <tr>
+            <td class="name">GeonamesProperties$MockitoMock$359820123$auxiliary$FKSFQ15C</td>
+        </tr>
+        <tr>
+            <td class="name">GeonamesProperties$MockitoMock$359820123$auxiliary$InzR7Bqr</td>
+        </tr>
+        <tr>
+            <td class="name">GeonamesProperties$MockitoMock$359820123$auxiliary$JyrmnvSX</td>
+        </tr>
+        <tr>
+            <td class="name">GeonamesProperties$MockitoMock$359820123$auxiliary$ovm2L9ki</td>
+        </tr>
+        <tr>
+            <td class="name">GeonamesProperties$MockitoMock$359820123$auxiliary$PtUwKFnU</td>
+        </tr>
+        <tr>
+            <td class="name">GeonamesProperties$MockitoMock$359820123$auxiliary$pW4NmcAX</td>
+        </tr>
+        <tr>
+            <td class="name">GeonamesProperties$MockitoMock$359820123$auxiliary$QuM79WN4</td>
+        </tr>
+        <tr>
+            <td class="name">GeonamesProperties$MockitoMock$359820123$auxiliary$tnzhmDom</td>
+        </tr>
+        <tr>
+            <td class="name">GeonamesProperties$MockitoMock$359820123$auxiliary$vEjyGrDW</td>
+        </tr>
+        <tr>
+            <td class="name">GeonamesProperties$MockitoMock$359820123$auxiliary$wNNYrng2</td>
+        </tr>
+        <tr>
+            <td class="name">GeonamesProperties$MockitoMock$359820123$auxiliary$zHnydYac</td>
+        </tr>
+        <tr>
+            <td class="name"><strong>total</strong></td>
+            <td class="coverageStat">
+  <span class="percent">
+    53.8%
+  </span>
+                <span class="absValue">
+    (7/ 13)
+  </span>
+            </td>
+            <td class="coverageStat">
+  <span class="percent">
+    68.4%
+  </span>
+                <span class="absValue">
+    (13/ 19)
+  </span>
+            </td>
+        </tr>
+    </table>
+
+    <br/>
+    <br/>
+
+
+    <div class="sourceCode"><i>1</i>&nbsp;package demo.properies;
+        <i>2</i>&nbsp;
+        <i>3</i>&nbsp;import org.springframework.boot.context.properties.ConfigurationProperties;
+        <i>4</i>&nbsp;import org.springframework.context.annotation.Configuration;
+        <i>5</i>&nbsp;import org.springframework.context.annotation.PropertySource;
+        <i>6</i>&nbsp;import org.springframework.validation.annotation.Validated;
+        <i>7</i>&nbsp;
+        <i>8</i>&nbsp;import javax.validation.constraints.NotBlank;
+        <i>9</i>&nbsp;import javax.validation.constraints.NotNull;
+        <i>10</i>&nbsp;
+        <i>11</i>&nbsp;@Configuration
+        <i>12</i>&nbsp;@PropertySource(&quot;classpath:geonames.properties&quot;)
+        <i>13</i>&nbsp;@ConfigurationProperties(prefix = &quot;geonames&quot;)
+        <i>14</i>&nbsp;@Validated
+        <b class="fc"><i>15</i>&nbsp;public class GeonamesProperties {</b>
+        <i>16</i>&nbsp;
+        <i>17</i>&nbsp; @NotBlank
+        <i>18</i>&nbsp; private String url;
+        <i>19</i>&nbsp; @NotBlank
+        <i>20</i>&nbsp; private String username;
+        <i>21</i>&nbsp; @NotBlank
+        <i>22</i>&nbsp; private String countryInfo;
+        <i>23</i>&nbsp; @NotBlank
+        <i>24</i>&nbsp; private String cities;
+        <i>25</i>&nbsp; @NotBlank
+        <i>26</i>&nbsp; private String weather;
+        <i>27</i>&nbsp; @NotNull
+        <i>28</i>&nbsp; private int maxRows;
+        <i>29</i>&nbsp;
+        <i>30</i>&nbsp; public String getUrl() {
+        <b class="nc"><i>31</i>&nbsp; return url;</b>
+        <i>32</i>&nbsp; }
+        <i>33</i>&nbsp;
+        <i>34</i>&nbsp; public void setUrl(String url) {
+        <b class="fc"><i>35</i>&nbsp; this.url = url;</b>
+        <b class="fc"><i>36</i>&nbsp; }</b>
+        <i>37</i>&nbsp;
+        <i>38</i>&nbsp; public String getUsername() {
+        <b class="nc"><i>39</i>&nbsp; return username;</b>
+        <i>40</i>&nbsp; }
+        <i>41</i>&nbsp;
+        <i>42</i>&nbsp; public void setUsername(String username) {
+        <b class="fc"><i>43</i>&nbsp; this.username = username;</b>
+        <b class="fc"><i>44</i>&nbsp; }</b>
+        <i>45</i>&nbsp;
+        <i>46</i>&nbsp; public String getCountryInfo() {
+        <b class="nc"><i>47</i>&nbsp; return countryInfo;</b>
+        <i>48</i>&nbsp; }
+        <i>49</i>&nbsp;
+        <i>50</i>&nbsp; public void setCountryInfo(String countyInfo) {
+        <b class="fc"><i>51</i>&nbsp; this.countryInfo = countyInfo;</b>
+        <b class="fc"><i>52</i>&nbsp; }</b>
+        <i>53</i>&nbsp;
+        <i>54</i>&nbsp; public String getCities() {
+        <b class="nc"><i>55</i>&nbsp; return cities;</b>
+        <i>56</i>&nbsp; }
+        <i>57</i>&nbsp;
+        <i>58</i>&nbsp; public void setCities(String cities) {
+        <b class="fc"><i>59</i>&nbsp; this.cities = cities;</b>
+        <b class="fc"><i>60</i>&nbsp; }</b>
+        <i>61</i>&nbsp;
+        <i>62</i>&nbsp; public String getWeather() {
+        <b class="nc"><i>63</i>&nbsp; return weather;</b>
+        <i>64</i>&nbsp; }
+        <i>65</i>&nbsp;
+        <i>66</i>&nbsp; public void setWeather(String weather) {
+        <b class="fc"><i>67</i>&nbsp; this.weather = weather;</b>
+        <b class="fc"><i>68</i>&nbsp; }</b>
+        <i>69</i>&nbsp;
+        <i>70</i>&nbsp; public int getMaxRows() {
+        <b class="nc"><i>71</i>&nbsp; return maxRows;</b>
+        <i>72</i>&nbsp; }
+        <i>73</i>&nbsp;
+        <i>74</i>&nbsp; public void setMaxRows(int maxRows) {
+        <b class="fc"><i>75</i>&nbsp; this.maxRows = maxRows;</b>
+        <b class="fc"><i>76</i>&nbsp; }</b>
+        <i>77</i>&nbsp;}
+    </div>
+</div>
+
+<div class="footer">
+
+    <div style="float:right;">generated on 2019-01-16 21:13</div>
+</div>
+</body>
+</html>

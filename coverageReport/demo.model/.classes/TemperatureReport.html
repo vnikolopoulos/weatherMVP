@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+    <title>Coverage Report :: TemperatureReport</title>
+    <style type="text/css">
+        @import "../../.css/coverage.css";
+    </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+    <div class="breadCrumbs">
+        [ <a href="../../index.html">all classes</a> ]
+        [ <a href="../index.html">demo.model</a> ]
+    </div>
+
+    <h1>Coverage Summary for Class: TemperatureReport (demo.model)</h1>
+
+    <table class="coverageStats">
+        <tr>
+            <th class="name">Class</th>
+            <th class="coverageStat
+">
+                Class, %
+            </th>
+            <th class="coverageStat
+">
+                Method, %
+            </th>
+            <th class="coverageStat
+">
+                Line, %
+            </th>
+        </tr>
+        <tr>
+            <td class="name">TemperatureReport</td>
+            <td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+                <span class="absValue">
+    (1/ 1)
+  </span>
+            </td>
+            <td class="coverageStat">
+  <span class="percent">
+    66.7%
+  </span>
+                <span class="absValue">
+    (4/ 6)
+  </span>
+            </td>
+            <td class="coverageStat">
+  <span class="percent">
+    63.6%
+  </span>
+                <span class="absValue">
+    (7/ 11)
+  </span>
+            </td>
+        </tr>
+
+    </table>
+
+    <br/>
+    <br/>
+
+
+    <div class="sourceCode"><i>1</i>&nbsp;package demo.model;
+        <i>2</i>&nbsp;
+        <i>3</i>&nbsp;import java.util.HashMap;
+        <i>4</i>&nbsp;import java.util.Map;
+        <i>5</i>&nbsp;
+        <i>6</i>&nbsp;public class TemperatureReport {
+        <i>7</i>&nbsp; String countryName;
+        <i>8</i>&nbsp;
+        <i>9</i>&nbsp; //Station Name -&gt; temperature
+        <i>10</i>&nbsp; Map&lt;String, String&gt; currentTemperature;
+        <i>11</i>&nbsp;
+        <b class="fc"><i>12</i>&nbsp; public TemperatureReport(String countryName) {</b>
+        <b class="fc"><i>13</i>&nbsp; this.countryName = countryName;</b>
+        <b class="fc"><i>14</i>&nbsp; this.currentTemperature = new HashMap&lt;&gt;();</b>
+        <b class="fc"><i>15</i>&nbsp; }</b>
+        <i>16</i>&nbsp;
+        <i>17</i>&nbsp; public String getCountryName() {
+        <b class="fc"><i>18</i>&nbsp; return countryName;</b>
+        <i>19</i>&nbsp; }
+        <i>20</i>&nbsp;
+        <i>21</i>&nbsp; public void setCountryName(String countryName) {
+        <b class="nc"><i>22</i>&nbsp; countryName = countryName;</b>
+        <b class="nc"><i>23</i>&nbsp; }</b>
+        <i>24</i>&nbsp;
+        <i>25</i>&nbsp; public Map&lt;String, String&gt; getCurrentTemperature() {
+        <b class="fc"><i>26</i>&nbsp; return currentTemperature;</b>
+        <i>27</i>&nbsp; }
+        <i>28</i>&nbsp;
+        <i>29</i>&nbsp; public void setCurrentTemperature(Map&lt;String, String&gt; currentTemperature) {
+        <b class="nc"><i>30</i>&nbsp; this.currentTemperature = currentTemperature;</b>
+        <b class="nc"><i>31</i>&nbsp; }</b>
+        <i>32</i>&nbsp;
+        <i>33</i>&nbsp; @Override
+        <i>34</i>&nbsp; public String toString() {
+        <b class="fc"><i>35</i>&nbsp; return &quot;TemperatureReport{&quot; +</b>
+        <i>36</i>&nbsp; &quot;countryName=&#39;&quot; + countryName + &#39;\&#39;&#39; +
+        <i>37</i>&nbsp; &quot;, currentTemperature=&quot; + currentTemperature +
+        <i>38</i>&nbsp; &#39;}&#39;;
+        <i>39</i>&nbsp; }
+        <i>40</i>&nbsp;}
+    </div>
+</div>
+
+<div class="footer">
+
+    <div style="float:right;">generated on 2019-01-16 21:13</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+    <title>Coverage Report :: WeatherService</title>
+    <style type="text/css">
+        @import "../../.css/coverage.css";
+    </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+    <div class="breadCrumbs">
+        [ <a href="../../index.html">all classes</a> ]
+        [ <a href="../index.html">demo.service</a> ]
+    </div>
+
+    <h1>Coverage Summary for Class: WeatherService (demo.service)</h1>
+
+    <table class="coverageStats">
+
+        <tr>
+            <th class="name">Class</th>
+            <th class="coverageStat
+">
+                Method, %
+            </th>
+            <th class="coverageStat
+">
+                Line, %
+            </th>
+        </tr>
+        <tr>
+            <td class="name">WeatherService</td>
+            <td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+                <span class="absValue">
+    (5/ 5)
+  </span>
+            </td>
+            <td class="coverageStat">
+  <span class="percent">
+    97.7%
+  </span>
+                <span class="absValue">
+    (42/ 43)
+  </span>
+            </td>
+        </tr>
+        <tr>
+            <td class="name">WeatherService$$EnhancerBySpringCGLIB$$460f8c00</td>
+        </tr>
+        <tr>
+            <td class="name">WeatherService$MockitoMock$1291996445</td>
+        </tr>
+        <tr>
+            <td class="name">WeatherService$MockitoMock$1291996445$auxiliary$0C7cy9sQ</td>
+        </tr>
+        <tr>
+            <td class="name">WeatherService$MockitoMock$1291996445$auxiliary$D0yKjb1v</td>
+        </tr>
+        <tr>
+            <td class="name">WeatherService$MockitoMock$1291996445$auxiliary$mLM0aMpc</td>
+        </tr>
+        <tr>
+            <td class="name">WeatherService$MockitoMock$1291996445$auxiliary$PJlxHeRf</td>
+        </tr>
+        <tr>
+            <td class="name">WeatherService$MockitoMock$1291996445$auxiliary$YqbJjOZS</td>
+        </tr>
+        <tr>
+            <td class="name"><strong>total</strong></td>
+            <td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+                <span class="absValue">
+    (5/ 5)
+  </span>
+            </td>
+            <td class="coverageStat">
+  <span class="percent">
+    97.7%
+  </span>
+                <span class="absValue">
+    (42/ 43)
+  </span>
+            </td>
+        </tr>
+    </table>
+
+    <br/>
+    <br/>
+
+
+    <div class="sourceCode"><i>1</i>&nbsp;package demo.service;
+        <i>2</i>&nbsp;
+        <i>3</i>&nbsp;import demo.exception.CountryNotFoundException;
+        <i>4</i>&nbsp;import demo.model.TemperatureReport;
+        <i>5</i>&nbsp;import demo.model.geonames.City;
+        <i>6</i>&nbsp;import demo.model.geonames.CountryInfo;
+        <i>7</i>&nbsp;import demo.model.geonames.WeatherObservation;
+        <i>8</i>&nbsp;import org.slf4j.Logger;
+        <i>9</i>&nbsp;import org.slf4j.LoggerFactory;
+        <i>10</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+        <i>11</i>&nbsp;import org.springframework.cache.annotation.CacheConfig;
+        <i>12</i>&nbsp;import org.springframework.cache.annotation.Cacheable;
+        <i>13</i>&nbsp;import org.springframework.stereotype.Service;
+        <i>14</i>&nbsp;
+        <i>15</i>&nbsp;import java.util.List;
+        <i>16</i>&nbsp;
+        <i>17</i>&nbsp;@Service
+        <i>18</i>&nbsp;@CacheConfig(cacheNames={&quot;weather&quot;})
+        <b class="fc"><i>19</i>&nbsp;public class WeatherService {</b>
+        <i>20</i>&nbsp;
+        <i>21</i>&nbsp; @Autowired
+        <i>22</i>&nbsp; GeonamesService geonamesService;
+        <i>23</i>&nbsp;
+        <b class="fc"><i>24</i>&nbsp; private static final Logger log =
+            LoggerFactory.getLogger(WeatherService.class);</b>
+        <i>25</i>&nbsp;
+        <i>26</i>&nbsp; /**
+        <i>27</i>&nbsp; * For the requested country, finds the boundary box, all the weather observations stations and
+        the cities in the box.
+        <i>28</i>&nbsp; * Then defines the weather observation country as: The country of the city that is closest to
+        the station.
+        <i>29</i>&nbsp; *
+        <i>30</i>&nbsp; * @param id The country id in ISO 3166-1 alpha-2 country code format
+        <i>31</i>&nbsp; * @return
+        <i>32</i>&nbsp; */
+        <i>33</i>&nbsp; @Cacheable
+        <i>34</i>&nbsp; public TemperatureReport getTemperatureForCountry(String id) {
+        <i>35</i>&nbsp;
+        <b class="fc"><i>36</i>&nbsp; CountryInfo countryInfo = geonamesService.getCountryInfo(id);</b>
+        <b class="fc"><i>37</i>&nbsp; if (countryInfo == null){</b>
+        <b class="nc"><i>38</i>&nbsp; throw new CountryNotFoundException(&quot;Country &quot; + id + &quot; not found&quot;);</b>
+        <i>39</i>&nbsp; }
+        <b class="fc"><i>40</i>&nbsp; TemperatureReport temperatureReport = new
+            TemperatureReport(countryInfo.getCountryName());</b>
+        <i>41</i>&nbsp;
+        <b class="fc"><i>42</i>&nbsp; List&lt;WeatherObservation&gt; weatherObservationsInCountryBoundaryBox =
+            geonamesService.getWeatherObservationsInBox(</b>
+        <b class="fc"><i>43</i>&nbsp; countryInfo.getNorth(), countryInfo.getSouth(), countryInfo.getEast(),
+            countryInfo.getWest());</b>
+        <i>44</i>&nbsp;
+        <b class="fc"><i>45</i>&nbsp; if (weatherObservationsInCountryBoundaryBox == null ||
+            weatherObservationsInCountryBoundaryBox.isEmpty()){</b>
+        <b class="fc"><i>46</i>&nbsp; return temperatureReport;</b>
+        <i>47</i>&nbsp; }
+        <i>48</i>&nbsp;
+        <i>49</i>&nbsp; // These are the cities in the country&#39;s boundary box. There are not necessarily all in the
+        country.
+        <i>50</i>&nbsp; // The country&#39;s borders are probably tighter.
+        <b class="fc"><i>51</i>&nbsp; List&lt;City&gt; citiesInCountryBoundaryBox =
+            geonamesService.getCitiesInBox(countryInfo.getNorth(),</b>
+        <b class="fc"><i>52</i>&nbsp; countryInfo.getSouth(), countryInfo.getEast(), countryInfo.getWest());</b>
+        <i>53</i>&nbsp;
+        <i>54</i>&nbsp; //Find all weather observation stations for which the closest city is in the requested country
+        and add them to the report
+        <i>55</i>&nbsp; //If there are no cities in the boundary box, return all observation stations
+        <b class="fc"><i>56</i>&nbsp; for (WeatherObservation weatherObservation :
+            weatherObservationsInCountryBoundaryBox){</b>
+        <b class="fc"><i>57</i>&nbsp; if (citiesInCountryBoundaryBox == null || citiesInCountryBoundaryBox.isEmpty()</b>
+        <b class="fc"><i>58</i>&nbsp; ||closestCity(weatherObservation.getLat(),weatherObservation.getLng(),
+            citiesInCountryBoundaryBox)</b>
+        <b class="fc"><i>59</i>&nbsp; .getCountryCode().equalsIgnoreCase(id)){</b>
+        <b class="fc"><i>60</i>&nbsp; temperatureReport.getCurrentTemperature().put(weatherObservation.getStationName(),
+            weatherObservation.getTemperature());</b>
+        <i>61</i>&nbsp; }
+        <b class="fc"><i>62</i>&nbsp; }</b>
+        <i>63</i>&nbsp;
+        <b class="fc"><i>64</i>&nbsp; if (citiesInCountryBoundaryBox != null)</b>
+        <b class="fc"><i>65</i>&nbsp; log.debug(citiesInCountryBoundaryBox.toString());</b>
+        <b class="fc"><i>66</i>&nbsp; if (weatherObservationsInCountryBoundaryBox != null)</b>
+        <b class="fc"><i>67</i>&nbsp; log.debug(weatherObservationsInCountryBoundaryBox.toString());</b>
+        <b class="fc"><i>68</i>&nbsp; log.debug(temperatureReport.toString());</b>
+        <i>69</i>&nbsp;
+        <b class="fc"><i>70</i>&nbsp; return temperatureReport;</b>
+        <i>71</i>&nbsp; }
+        <i>72</i>&nbsp;
+        <i>73</i>&nbsp; /**
+        <i>74</i>&nbsp; * Find the closest city to a point defined by latitude and longitude currently using exhaustive
+        search
+        <i>75</i>&nbsp; * @param lat
+        <i>76</i>&nbsp; * @param lng
+        <i>77</i>&nbsp; * @param cities
+        <i>78</i>&nbsp; * @return
+        <i>79</i>&nbsp; */
+        <i>80</i>&nbsp; protected City closestCity(double lat, double lng, List&lt;City&gt; cities){
+        <b class="fc"><i>81</i>&nbsp; City closestCity = null;</b>
+        <b class="fc"><i>82</i>&nbsp; double distance = 0;</b>
+        <b class="fc"><i>83</i>&nbsp; for (City city : cities){</b>
+        <b class="fc"><i>84</i>&nbsp; if (closestCity==null || distance(lat, city.getLat(), lng, city.getLng(), 0.0,0.0)
+            &lt; distance){</b>
+        <b class="fc"><i>85</i>&nbsp; closestCity = city;</b>
+        <b class="fc"><i>86</i>&nbsp; distance = distance(lat, city.getLat(), lng, city.getLng(), 0.0,0.0);</b>
+        <i>87</i>&nbsp; }
+        <b class="fc"><i>88</i>&nbsp; }</b>
+        <b class="fc"><i>89</i>&nbsp; return closestCity;</b>
+        <i>90</i>&nbsp; }
+        <i>91</i>&nbsp;
+        <i>92</i>&nbsp;
+        <i>93</i>&nbsp;
+        <i>94</i>&nbsp;
+        <i>95</i>&nbsp; /**
+        <i>96</i>&nbsp; * Calculate distance between two points in latitude and longitude taking
+        <i>97</i>&nbsp; * into account height difference. If you are not interested in height
+        <i>98</i>&nbsp; * difference pass 0.0. Uses Haversine method as its base.
+        <i>99</i>&nbsp; *
+        <i>100</i>&nbsp; *
+        https://stackoverflow.com/questions/3694380/calculating-distance-between-two-points-using-latitude-longitude-what-am-i-doi
+        <i>101</i>&nbsp; *
+        <i>102</i>&nbsp; * lat1, lon1 Start point lat2, lon2 End point el1 Start altitude in meters
+        <i>103</i>&nbsp; * el2 End altitude in meters
+        <i>104</i>&nbsp; * @returns Distance in Meters
+        <i>105</i>&nbsp; */
+        <i>106</i>&nbsp; protected double distance(double lat1, double lat2, double lon1,
+        <i>107</i>&nbsp; double lon2, double el1, double el2) {
+        <i>108</i>&nbsp;
+        <b class="fc"><i>109</i>&nbsp; final int R = 6371; // Radius of the earth</b>
+        <i>110</i>&nbsp;
+        <b class="fc"><i>111</i>&nbsp; double latDistance = Math.toRadians(lat2 - lat1);</b>
+        <b class="fc"><i>112</i>&nbsp; double lonDistance = Math.toRadians(lon2 - lon1);</b>
+        <b class="fc"><i>113</i>&nbsp; double a = Math.sin(latDistance / 2) * Math.sin(latDistance / 2)</b>
+        <b class="fc"><i>114</i>&nbsp; + Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2))</b>
+        <b class="fc"><i>115</i>&nbsp; * Math.sin(lonDistance / 2) * Math.sin(lonDistance / 2);</b>
+        <b class="fc"><i>116</i>&nbsp; double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));</b>
+        <b class="fc"><i>117</i>&nbsp; double distance = R * c * 1000; // convert to meters</b>
+        <i>118</i>&nbsp;
+        <b class="fc"><i>119</i>&nbsp; double height = el1 - el2;</b>
+        <i>120</i>&nbsp;
+        <b class="fc"><i>121</i>&nbsp; distance = Math.pow(distance, 2) + Math.pow(height, 2);</b>
+        <i>122</i>&nbsp;
+        <b class="fc"><i>123</i>&nbsp; return Math.sqrt(distance);</b>
+        <i>124</i>&nbsp; }
+        <i>125</i>&nbsp;
+        <i>126</i>&nbsp;
+        <i>127</i>&nbsp;}
+    </div>
+</div>
+
+<div class="footer">
+
+    <div style="float:right;">generated on 2019-01-16 21:13</div>
+</div>
+</body>
+</html>
