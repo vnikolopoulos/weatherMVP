@@ -6,6 +6,10 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import java.util.Date;
 
+/**
+ * Weather Observation in a weather station based on geonames.org model.
+ * Contains coordinates, observation date, temperature and station name.
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class WeatherObservation {
 

@@ -8,6 +8,9 @@ import org.springframework.validation.annotation.Validated;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+/**
+ * Configuration class about geonames.org
+ */
 @Configuration
 @PropertySource("classpath:geonames.properties")
 @ConfigurationProperties(prefix = "geonames")

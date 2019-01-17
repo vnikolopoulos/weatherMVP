@@ -3,6 +3,10 @@ package demo.model;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Temperature report is the return object of weather application. Contains the country name
+ * and the observed temperatures at the various weather stations.
+ */
 public class TemperatureReport {
     String countryName;
 

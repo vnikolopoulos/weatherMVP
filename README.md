@@ -1,6 +1,6 @@
 # Temperture Report
 A simple REST API endpoint providing the current weather conditions of the available weather stations of a country using the provided web services of
-geonames.org
+geonames.org using Spring-boot
 
 ## Requirements
 
@@ -28,4 +28,7 @@ A [Postman](https://www.getpostman.com/) collection is included: `weatherMVPRequ
 A cache mechanism is provided in order to reduce response time and minimize requests at geonames.org. By default the system caches the temperatures for each country for 1 hour. This can be cofigured at ehcache cofiguration file `src/main/resources/ehcache.xml`.
 
 ## Solution
-//TODO
+This application uses [geonames.org](http://wwww.geonames.org) to report the latest observed temperatures
+for a country. For the requested country first finds the country's bounding box, then the
+cities and the weather stations in this box and finally returns the weather stations that are
+actually in the country, based on the country of the closest city.

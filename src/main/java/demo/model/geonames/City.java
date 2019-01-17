@@ -3,6 +3,9 @@ package demo.model.geonames;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+/**
+ * City class with city name, countryCode and coordinates.
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class City {
     private double lng;

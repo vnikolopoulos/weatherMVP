@@ -13,12 +13,17 @@ import java.util.HashSet;
 import java.util.Locale;
 import java.util.Set;
 
+/**
+ * Weather Application controller, returns the latest reported temperatures for all the weather
+ * stations in a country. The country code should be ISO3166 compliant (a check is performed).
+ */
 @RestController
 public class ApplicationController {
 
     @Autowired
     private WeatherService weatherService;
 
+    //Initialize a static set of all available country code in order to make fast validations.
     private static Set<String> ISO3166CountryCodes = new HashSet<>(Arrays.asList(Locale.getISOCountries()));
 
     @RequestMapping(value = "/{id}")

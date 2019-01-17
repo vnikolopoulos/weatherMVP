@@ -4,6 +4,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.util.List;
 
+/**
+ * Weather Observation Response based on the expected response for a JSON weather in box query
+ * from geonames.org.
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class WeatherObservationResponse {
     private List<WeatherObservation> weatherObservations;

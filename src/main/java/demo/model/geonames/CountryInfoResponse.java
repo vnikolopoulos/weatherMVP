@@ -4,6 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.util.List;
 
+/**
+ * CountryInfoResponse models the expected response from geonames.org for country
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CountryInfoResponse {
     List<CountryInfo> geonames;

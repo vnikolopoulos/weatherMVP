@@ -2,6 +2,10 @@ package demo.model.geonames;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+/**
+ * Country Info class contains all the information we are interested about a country
+ * for JSON country info queries
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CountryInfo {
     private String countryCode;

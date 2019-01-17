@@ -4,6 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.util.List;
 
+/**
+ * CityResponse class models the expected response from geonames.org for JSON city queries.
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CityResponse {
     List<City> geonames;
