@@ -33,50 +33,28 @@ class WeatherServiceTest {
     @BeforeAll
     public void createCities() {
         cities = new ArrayList<>();
-        City city1 = new City();
-        city1.setName("Athens");
-        city1.setCountryCode("GR");
-        city1.setLat(39.5);
-        city1.setLng(23.4);
+        City city1 = new City.Builder().name("Athens").countryCode("GR").lat(39.5).lng(23.4).build();
         cities.add(city1);
 
-        City city2 = new City();
-        city2.setName("Kalamata");
-        city2.setCountryCode("GR");
-        city2.setLat(38);
-        city2.setLng(23.2);
+        City city2 = new City.Builder().name("Kalamata").countryCode("GR").lat(38).lng(23.2).build();
         cities.add(city2);
 
-        City city3 = new City();
-        city3.setName("Tirana");
-        city3.setCountryCode("AL");
-        city3.setLat(44);
-        city3.setLng(25);
+        City city3 = new City.Builder().name("Tirana").countryCode("AL").lat(44).lng(25).build();
         cities.add(city3);
 
-        City city4 = new City();
-        city4.setName("Korinthos");
-        city4.setCountryCode("GR");
-        city4.setLat(39);
-        city4.setLng(23.1);
+        City city4 = new City.Builder().name("Korinthos").countryCode("GR").lat(39).lng(23.1).build();
         cities.add(city4);
     }
 
     @BeforeAll
     public void createWeatherObservations() {
         weatherObservations = new ArrayList<>();
-        WeatherObservation wo1 = new WeatherObservation();
-        wo1.setLat(39);
-        wo1.setLng(23);
-        wo1.setStationName("Near Athens");
-        wo1.setTemperature("10");
+        WeatherObservation wo1 = new WeatherObservation.Builder().lat(39).lng(23).stationName("Near Athens")
+                .temperature("10").build();
         weatherObservations.add(wo1);
 
-        WeatherObservation wo2 = new WeatherObservation();
-        wo2.setLat(43.2);
-        wo2.setLng(23.1);
-        wo2.setStationName("Near Tirana");
-        wo2.setTemperature("15");
+        WeatherObservation wo2 = new WeatherObservation.Builder().lat(43.2).lng(23.1).stationName("Near Tirana")
+                .temperature("15").build();
         weatherObservations.add(wo2);
     }
 
@@ -90,13 +68,7 @@ class WeatherServiceTest {
 
         @BeforeAll
         void setCountry() {
-            gr = new CountryInfo();
-            gr.setNorth(0);
-            gr.setSouth(0);
-            gr.setEast(0);
-            gr.setWest(0);
-            gr.setCountryCode("GR");
-            gr.setCountryName("Greece");
+            gr = new CountryInfo.Builder().countryCode("GR").countryName("Greece").north(0).south(0).east(0).west(0).build();
         }
 
         @BeforeEach

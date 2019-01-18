@@ -81,25 +81,29 @@
         <i>10</i>&nbsp;import java.text.SimpleDateFormat;
         <i>11</i>&nbsp;import java.util.Date;
         <i>12</i>&nbsp;
-        <b class="nc"><i>13</i>&nbsp;public class DateHandler extends JsonDeserializer {</b>
-        <i>14</i>&nbsp; @Override
-        <i>15</i>&nbsp; public Date deserialize(JsonParser jsonParser, DeserializationContext deserializationContext)
+        <i>13</i>&nbsp;/**
+        <i>14</i>&nbsp; * Helper class to deserialize date.
+        <i>15</i>&nbsp; * Used in weather observation report.
+        <i>16</i>&nbsp; */
+        <b class="nc"><i>17</i>&nbsp;public class DateHandler extends JsonDeserializer {</b>
+        <i>18</i>&nbsp; @Override
+        <i>19</i>&nbsp; public Date deserialize(JsonParser jsonParser, DeserializationContext deserializationContext)
         throws IOException, JsonProcessingException {
-        <b class="nc"><i>16</i>&nbsp; SimpleDateFormat sdf = new SimpleDateFormat(&quot;yyyy-MM-DD HH:mm:ss&quot;);</b>
-        <i>17</i>&nbsp;
-        <i>18</i>&nbsp; try {
-        <b class="nc"><i>19</i>&nbsp; return sdf.parse(jsonParser.getText());</b>
-        <b class="nc"><i>20</i>&nbsp; } catch (ParseException e) {</b>
-        <b class="nc"><i>21</i>&nbsp; return null;</b>
-        <i>22</i>&nbsp; }
-        <i>23</i>&nbsp; }
-        <i>24</i>&nbsp;}
+        <b class="nc"><i>20</i>&nbsp; SimpleDateFormat sdf = new SimpleDateFormat(&quot;yyyy-MM-DD HH:mm:ss&quot;);</b>
+        <i>21</i>&nbsp;
+        <i>22</i>&nbsp; try {
+        <b class="nc"><i>23</i>&nbsp; return sdf.parse(jsonParser.getText());</b>
+        <b class="nc"><i>24</i>&nbsp; } catch (ParseException e) {</b>
+        <b class="nc"><i>25</i>&nbsp; return null;</b>
+        <i>26</i>&nbsp; }
+        <i>27</i>&nbsp; }
+        <i>28</i>&nbsp;}
     </div>
 </div>
 
 <div class="footer">
 
-    <div style="float:right;">generated on 2019-01-16 21:13</div>
+    <div style="float:right;">generated on 2019-01-18 11:44</div>
 </div>
 </body>
 </html>

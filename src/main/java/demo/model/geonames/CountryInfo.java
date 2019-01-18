@@ -15,6 +15,15 @@ public class CountryInfo {
     private double east;
     private double west;
 
+    private CountryInfo(Builder builder) {
+        countryCode = builder.countryCode;
+        countryName = builder.countryName;
+        south = builder.south;
+        north = builder.north;
+        east = builder.east;
+        west = builder.west;
+    }
+
     @Override
     public String toString() {
         return "CountryInfo{" +
@@ -27,12 +36,12 @@ public class CountryInfo {
                 '}';
     }
 
-    public String getCountryName() {
-        return countryName;
-    }
-
     public String getCountryCode() {
         return countryCode;
+    }
+
+    public String getCountryName() {
+        return countryName;
     }
 
     public double getSouth() {
@@ -51,27 +60,53 @@ public class CountryInfo {
         return west;
     }
 
-    public void setCountryCode(String countryCode) {
-        this.countryCode = countryCode;
+    public CountryInfo() {
     }
 
-    public void setCountryName(String countryName) {
-        this.countryName = countryName;
-    }
 
-    public void setSouth(double south) {
-        this.south = south;
-    }
+    public static final class Builder {
+        private String countryCode;
+        private String countryName;
+        private double south;
+        private double north;
+        private double east;
+        private double west;
 
-    public void setNorth(double north) {
-        this.north = north;
-    }
+        public Builder() {
+        }
 
-    public void setEast(double east) {
-        this.east = east;
-    }
+        public Builder countryCode(String val) {
+            countryCode = val;
+            return this;
+        }
 
-    public void setWest(double west) {
-        this.west = west;
+        public Builder countryName(String val) {
+            countryName = val;
+            return this;
+        }
+
+        public Builder south(double val) {
+            south = val;
+            return this;
+        }
+
+        public Builder north(double val) {
+            north = val;
+            return this;
+        }
+
+        public Builder east(double val) {
+            east = val;
+            return this;
+        }
+
+        public Builder west(double val) {
+            west = val;
+            return this;
+        }
+
+        public CountryInfo build() {
+            return new CountryInfo(this);
+        }
     }
 }

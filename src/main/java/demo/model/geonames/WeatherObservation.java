@@ -21,6 +21,14 @@ public class WeatherObservation {
     private String temperature;
     private String stationName;
 
+    private WeatherObservation(Builder builder) {
+        lng = builder.lng;
+        lat = builder.lat;
+        dateTime = builder.dateTime;
+        temperature = builder.temperature;
+        stationName = builder.stationName;
+    }
+
     @Override
     public String toString() {
         return "WeatherObservation{" +
@@ -32,43 +40,66 @@ public class WeatherObservation {
                 '}';
     }
 
-    public double getLng() {
-        return lng;
+    public WeatherObservation() {
     }
 
-    public void setLng(double lng) {
-        this.lng = lng;
+    public double getLng() {
+        return lng;
     }
 
     public double getLat() {
         return lat;
     }
 
-    public void setLat(double lat) {
-        this.lat = lat;
-    }
-
     public Date getDateTime() {
         return dateTime;
-    }
-
-    public void setDateTime(Date dateTime) {
-        this.dateTime = dateTime;
     }
 
     public String getTemperature() {
         return temperature;
     }
 
-    public void setTemperature(String temperature) {
-        this.temperature = temperature;
-    }
-
     public String getStationName() {
         return stationName;
     }
 
-    public void setStationName(String stationName) {
-        this.stationName = stationName;
+    public static final class Builder {
+        private double lng;
+        private double lat;
+        private Date dateTime;
+        private String temperature;
+        private String stationName;
+
+        public Builder() {
+        }
+
+        public Builder lng(double val) {
+            lng = val;
+            return this;
+        }
+
+        public Builder lat(double val) {
+            lat = val;
+            return this;
+        }
+
+        public Builder dateTime(Date val) {
+            dateTime = val;
+            return this;
+        }
+
+        public Builder temperature(String val) {
+            temperature = val;
+            return this;
+        }
+
+        public Builder stationName(String val) {
+            stationName = val;
+            return this;
+        }
+
+        public WeatherObservation build() {
+            return new WeatherObservation(this);
+        }
     }
 }

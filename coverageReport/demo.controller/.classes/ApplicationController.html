@@ -84,30 +84,35 @@
         <i>13</i>&nbsp;import java.util.Locale;
         <i>14</i>&nbsp;import java.util.Set;
         <i>15</i>&nbsp;
-        <i>16</i>&nbsp;@RestController
-        <i>17</i>&nbsp;public class ApplicationController {
-        <i>18</i>&nbsp;
-        <i>19</i>&nbsp; @Autowired
-        <i>20</i>&nbsp; private WeatherService weatherService;
-        <i>21</i>&nbsp;
-        <b class="fc"><i>22</i>&nbsp; private static Set&lt;String&gt; ISO3166CountryCodes = new HashSet&lt;&gt;(Arrays.asList(Locale.getISOCountries()));</b>
-        <i>23</i>&nbsp;
-        <i>24</i>&nbsp; @RequestMapping(value = &quot;/{id}&quot;)
-        <i>25</i>&nbsp; public TemperatureReport getTemperatureInCountry(@PathVariable String id){
-        <b class="fc"><i>26</i>&nbsp; if (!ISO3166CountryCodes.contains(id.toUpperCase()))</b>
-        <b class="fc"><i>27</i>&nbsp; throw new CountryNotFoundException(id+ &quot; is not valid ISO3166 country code&quot;);</b>
-        <b class="fc"><i>28</i>&nbsp; return weatherService.getTemperatureForCountry(id);</b>
-        <i>29</i>&nbsp; }
-        <i>30</i>&nbsp;
-        <b class="fc"><i>31</i>&nbsp; public ApplicationController() {</b>
-        <b class="fc"><i>32</i>&nbsp; }</b>
-        <i>33</i>&nbsp;}
+        <i>16</i>&nbsp;/**
+        <i>17</i>&nbsp; * Weather Application controller, returns the latest reported temperatures for all the weather
+        <i>18</i>&nbsp; * stations in a country. The country code should be ISO3166 compliant (a check is performed).
+        <i>19</i>&nbsp; */
+        <i>20</i>&nbsp;@RestController
+        <i>21</i>&nbsp;public class ApplicationController {
+        <i>22</i>&nbsp;
+        <i>23</i>&nbsp; @Autowired
+        <i>24</i>&nbsp; private WeatherService weatherService;
+        <i>25</i>&nbsp;
+        <i>26</i>&nbsp; //Initialize a static set of all available country code in order to make fast validations.
+        <b class="fc"><i>27</i>&nbsp; private static Set&lt;String&gt; ISO3166CountryCodes = new HashSet&lt;&gt;(Arrays.asList(Locale.getISOCountries()));</b>
+        <i>28</i>&nbsp;
+        <i>29</i>&nbsp; @RequestMapping(value = &quot;/{id}&quot;)
+        <i>30</i>&nbsp; public TemperatureReport getTemperatureInCountry(@PathVariable String id) {
+        <b class="fc"><i>31</i>&nbsp; if (!ISO3166CountryCodes.contains(id.toUpperCase()))</b>
+        <b class="fc"><i>32</i>&nbsp; throw new CountryNotFoundException(id + &quot; is not valid ISO3166 country code&quot;);</b>
+        <b class="fc"><i>33</i>&nbsp; return weatherService.getTemperatureForCountry(id);</b>
+        <i>34</i>&nbsp; }
+        <i>35</i>&nbsp;
+        <b class="fc"><i>36</i>&nbsp; public ApplicationController() {</b>
+        <b class="fc"><i>37</i>&nbsp; }</b>
+        <i>38</i>&nbsp;}
     </div>
 </div>
 
 <div class="footer">
 
-    <div style="float:right;">generated on 2019-01-16 21:13</div>
+    <div style="float:right;">generated on 2019-01-18 11:44</div>
 </div>
 </body>
 </html>

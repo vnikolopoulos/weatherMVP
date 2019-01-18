@@ -75,31 +75,35 @@
         <i>4</i>&nbsp;
         <i>5</i>&nbsp;import java.util.List;
         <i>6</i>&nbsp;
-        <i>7</i>&nbsp;@JsonIgnoreProperties(ignoreUnknown = true)
-        <b class="fc"><i>8</i>&nbsp;public class WeatherObservationResponse {</b>
-        <i>9</i>&nbsp; private List&lt;WeatherObservation&gt; weatherObservations;
-        <i>10</i>&nbsp;
-        <i>11</i>&nbsp; @Override
-        <i>12</i>&nbsp; public String toString() {
-        <b class="nc"><i>13</i>&nbsp; return &quot;WeatherObservationResponse{&quot; +</b>
-        <i>14</i>&nbsp; &quot;weatherObservations=&quot; + weatherObservations +
-        <i>15</i>&nbsp; &#39;}&#39;;
-        <i>16</i>&nbsp; }
-        <i>17</i>&nbsp;
-        <i>18</i>&nbsp; public List&lt;WeatherObservation&gt; getWeatherObservations() {
-        <b class="fc"><i>19</i>&nbsp; return weatherObservations;</b>
+        <i>7</i>&nbsp;/**
+        <i>8</i>&nbsp; * Weather Observation Response based on the expected response for a JSON weather in box query
+        <i>9</i>&nbsp; * from geonames.org.
+        <i>10</i>&nbsp; */
+        <i>11</i>&nbsp;@JsonIgnoreProperties(ignoreUnknown = true)
+        <b class="fc"><i>12</i>&nbsp;public class WeatherObservationResponse {</b>
+        <i>13</i>&nbsp; private List&lt;WeatherObservation&gt; weatherObservations;
+        <i>14</i>&nbsp;
+        <i>15</i>&nbsp; @Override
+        <i>16</i>&nbsp; public String toString() {
+        <b class="nc"><i>17</i>&nbsp; return &quot;WeatherObservationResponse{&quot; +</b>
+        <i>18</i>&nbsp; &quot;weatherObservations=&quot; + weatherObservations +
+        <i>19</i>&nbsp; &#39;}&#39;;
         <i>20</i>&nbsp; }
         <i>21</i>&nbsp;
-        <i>22</i>&nbsp; public void setWeatherObservations(List&lt;WeatherObservation&gt; weatherObservations) {
-        <b class="fc"><i>23</i>&nbsp; this.weatherObservations = weatherObservations;</b>
-        <b class="fc"><i>24</i>&nbsp; }</b>
-        <i>25</i>&nbsp;}
+        <i>22</i>&nbsp; public List&lt;WeatherObservation&gt; getWeatherObservations() {
+        <b class="fc"><i>23</i>&nbsp; return weatherObservations;</b>
+        <i>24</i>&nbsp; }
+        <i>25</i>&nbsp;
+        <i>26</i>&nbsp; public void setWeatherObservations(List&lt;WeatherObservation&gt; weatherObservations) {
+        <b class="fc"><i>27</i>&nbsp; this.weatherObservations = weatherObservations;</b>
+        <b class="fc"><i>28</i>&nbsp; }</b>
+        <i>29</i>&nbsp;}
     </div>
 </div>
 
 <div class="footer">
 
-    <div style="float:right;">generated on 2019-01-16 21:13</div>
+    <div style="float:right;">generated on 2019-01-18 11:44</div>
 </div>
 </body>
 </html>

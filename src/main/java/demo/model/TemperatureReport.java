@@ -22,16 +22,8 @@ public class TemperatureReport {
         return countryName;
     }
 
-    public void setCountryName(String countryName) {
-        countryName = countryName;
-    }
-
     public Map<String, String> getCurrentTemperature() {
         return currentTemperature;
-    }
-
-    public void setCurrentTemperature(Map<String, String> currentTemperature) {
-        this.currentTemperature = currentTemperature;
     }
 
     @Override

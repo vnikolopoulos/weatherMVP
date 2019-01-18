@@ -75,31 +75,34 @@
         <i>4</i>&nbsp;
         <i>5</i>&nbsp;import java.util.List;
         <i>6</i>&nbsp;
-        <i>7</i>&nbsp;@JsonIgnoreProperties(ignoreUnknown = true)
-        <b class="fc"><i>8</i>&nbsp;public class CityResponse {</b>
-        <i>9</i>&nbsp; List&lt;City&gt; geonames;
-        <i>10</i>&nbsp;
-        <i>11</i>&nbsp; @Override
-        <i>12</i>&nbsp; public String toString() {
-        <b class="nc"><i>13</i>&nbsp; return &quot;CityResponse{&quot; +</b>
-        <i>14</i>&nbsp; &quot;geonames=&quot; + geonames +
-        <i>15</i>&nbsp; &#39;}&#39;;
-        <i>16</i>&nbsp; }
-        <i>17</i>&nbsp;
-        <i>18</i>&nbsp; public List&lt;City&gt; getGeonames() {
-        <b class="fc"><i>19</i>&nbsp; return geonames;</b>
-        <i>20</i>&nbsp; }
-        <i>21</i>&nbsp;
-        <i>22</i>&nbsp; public void setGeonames(List&lt;City&gt; geonames) {
-        <b class="fc"><i>23</i>&nbsp; this.geonames = geonames;</b>
-        <b class="fc"><i>24</i>&nbsp; }</b>
-        <i>25</i>&nbsp;}
+        <i>7</i>&nbsp;/**
+        <i>8</i>&nbsp; * CityResponse class models the expected response from geonames.org for JSON city queries.
+        <i>9</i>&nbsp; */
+        <i>10</i>&nbsp;@JsonIgnoreProperties(ignoreUnknown = true)
+        <b class="fc"><i>11</i>&nbsp;public class CityResponse {</b>
+        <i>12</i>&nbsp; List&lt;City&gt; geonames;
+        <i>13</i>&nbsp;
+        <i>14</i>&nbsp; @Override
+        <i>15</i>&nbsp; public String toString() {
+        <b class="nc"><i>16</i>&nbsp; return &quot;CityResponse{&quot; +</b>
+        <i>17</i>&nbsp; &quot;geonames=&quot; + geonames +
+        <i>18</i>&nbsp; &#39;}&#39;;
+        <i>19</i>&nbsp; }
+        <i>20</i>&nbsp;
+        <i>21</i>&nbsp; public List&lt;City&gt; getGeonames() {
+        <b class="fc"><i>22</i>&nbsp; return geonames;</b>
+        <i>23</i>&nbsp; }
+        <i>24</i>&nbsp;
+        <i>25</i>&nbsp; public void setGeonames(List&lt;City&gt; geonames) {
+        <b class="fc"><i>26</i>&nbsp; this.geonames = geonames;</b>
+        <b class="fc"><i>27</i>&nbsp; }</b>
+        <i>28</i>&nbsp;}
     </div>
 </div>
 
 <div class="footer">
 
-    <div style="float:right;">generated on 2019-01-16 21:13</div>
+    <div style="float:right;">generated on 2019-01-18 11:44</div>
 </div>
 </body>
 </html>

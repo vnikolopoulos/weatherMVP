@@ -20,12 +20,9 @@
     <h1>Coverage Summary for Class: WeatherObservation (demo.model.geonames)</h1>
 
     <table class="coverageStats">
+
         <tr>
             <th class="name">Class</th>
-            <th class="coverageStat
-">
-                Class, %
-            </th>
             <th class="coverageStat
 ">
                 Method, %
@@ -39,20 +36,45 @@
             <td class="name">WeatherObservation</td>
             <td class="coverageStat">
   <span class="percent">
-    100%
+    77.8%
   </span>
                 <span class="absValue">
-    (1/ 1)
+    (7/ 9)
   </span>
             </td>
             <td class="coverageStat">
   <span class="percent">
-    83.3%
+    81.2%
   </span>
                 <span class="absValue">
-    (10/ 12)
+    (13/ 16)
   </span>
             </td>
+        </tr>
+        <tr>
+            <td class="name">WeatherObservation$1</td>
+        </tr>
+        <tr>
+            <td class="name">WeatherObservation$Builder</td>
+            <td class="coverageStat">
+  <span class="percent">
+    87.5%
+  </span>
+                <span class="absValue">
+    (7/ 8)
+  </span>
+            </td>
+            <td class="coverageStat">
+  <span class="percent">
+    85.7%
+  </span>
+                <span class="absValue">
+    (12/ 14)
+  </span>
+            </td>
+        </tr>
+        <tr>
+            <td class="name"><strong>total</strong></td>
             <td class="coverageStat">
   <span class="percent">
     82.4%
@@ -61,8 +83,15 @@
     (14/ 17)
   </span>
             </td>
+            <td class="coverageStat">
+  <span class="percent">
+    83.3%
+  </span>
+                <span class="absValue">
+    (25/ 30)
+  </span>
+            </td>
         </tr>
-
     </table>
 
     <br/>
@@ -77,74 +106,109 @@
         <i>6</i>&nbsp;
         <i>7</i>&nbsp;import java.util.Date;
         <i>8</i>&nbsp;
-        <i>9</i>&nbsp;@JsonIgnoreProperties(ignoreUnknown = true)
-        <b class="fc"><i>10</i>&nbsp;public class WeatherObservation {</b>
-        <i>11</i>&nbsp;
-        <i>12</i>&nbsp; private double lng;
-        <i>13</i>&nbsp; private double lat;
-        <i>14</i>&nbsp; @JsonAlias({&quot;datetime&quot;})
-        <i>15</i>&nbsp; @JsonDeserialize(using = DateHandler.class)
-        <i>16</i>&nbsp; private Date dateTime;
-        <i>17</i>&nbsp; private String temperature;
-        <i>18</i>&nbsp; private String stationName;
-        <i>19</i>&nbsp;
-        <i>20</i>&nbsp; @Override
-        <i>21</i>&nbsp; public String toString() {
-        <b class="fc"><i>22</i>&nbsp; return &quot;WeatherObservation{&quot; +</b>
-        <i>23</i>&nbsp; &quot;lng=&quot; + lng +
-        <i>24</i>&nbsp; &quot;, lat=&quot; + lat +
-        <i>25</i>&nbsp; &quot;, dateTime=&quot; + dateTime +
-        <i>26</i>&nbsp; &quot;, temperature=&#39;&quot; + temperature + &#39;\&#39;&#39; +
-        <i>27</i>&nbsp; &quot;, stationName=&#39;&quot; + stationName + &#39;\&#39;&#39; +
-        <i>28</i>&nbsp; &#39;}&#39;;
-        <i>29</i>&nbsp; }
-        <i>30</i>&nbsp;
-        <i>31</i>&nbsp; public double getLng() {
-        <b class="fc"><i>32</i>&nbsp; return lng;</b>
-        <i>33</i>&nbsp; }
-        <i>34</i>&nbsp;
-        <i>35</i>&nbsp; public void setLng(double lng) {
-        <b class="fc"><i>36</i>&nbsp; this.lng = lng;</b>
-        <b class="fc"><i>37</i>&nbsp; }</b>
-        <i>38</i>&nbsp;
-        <i>39</i>&nbsp; public double getLat() {
-        <b class="fc"><i>40</i>&nbsp; return lat;</b>
+        <i>9</i>&nbsp;/**
+        <i>10</i>&nbsp; * Weather Observation in a weather station based on geonames.org model.
+        <i>11</i>&nbsp; * Contains coordinates, observation date, temperature and station name.
+        <i>12</i>&nbsp; */
+        <i>13</i>&nbsp;@JsonIgnoreProperties(ignoreUnknown = true)
+        <b class="fc"><i>14</i>&nbsp;public class WeatherObservation {</b>
+        <i>15</i>&nbsp;
+        <i>16</i>&nbsp; private double lng;
+        <i>17</i>&nbsp; private double lat;
+        <i>18</i>&nbsp; @JsonAlias({&quot;datetime&quot;})
+        <i>19</i>&nbsp; @JsonDeserialize(using = DateHandler.class)
+        <i>20</i>&nbsp; private Date dateTime;
+        <i>21</i>&nbsp; private String temperature;
+        <i>22</i>&nbsp; private String stationName;
+        <i>23</i>&nbsp;
+        <b class="fc"><i>24</i>&nbsp; private WeatherObservation(Builder builder) {</b>
+        <b class="fc"><i>25</i>&nbsp; lng = builder.lng;</b>
+        <b class="fc"><i>26</i>&nbsp; lat = builder.lat;</b>
+        <b class="fc"><i>27</i>&nbsp; dateTime = builder.dateTime;</b>
+        <b class="fc"><i>28</i>&nbsp; temperature = builder.temperature;</b>
+        <b class="fc"><i>29</i>&nbsp; stationName = builder.stationName;</b>
+        <b class="fc"><i>30</i>&nbsp; }</b>
+        <i>31</i>&nbsp;
+        <i>32</i>&nbsp; @Override
+        <i>33</i>&nbsp; public String toString() {
+        <b class="fc"><i>34</i>&nbsp; return &quot;WeatherObservation{&quot; +</b>
+        <i>35</i>&nbsp; &quot;lng=&quot; + lng +
+        <i>36</i>&nbsp; &quot;, lat=&quot; + lat +
+        <i>37</i>&nbsp; &quot;, dateTime=&quot; + dateTime +
+        <i>38</i>&nbsp; &quot;, temperature=&#39;&quot; + temperature + &#39;\&#39;&#39; +
+        <i>39</i>&nbsp; &quot;, stationName=&#39;&quot; + stationName + &#39;\&#39;&#39; +
+        <i>40</i>&nbsp; &#39;}&#39;;
         <i>41</i>&nbsp; }
         <i>42</i>&nbsp;
-        <i>43</i>&nbsp; public void setLat(double lat) {
-        <b class="fc"><i>44</i>&nbsp; this.lat = lat;</b>
-        <b class="fc"><i>45</i>&nbsp; }</b>
-        <i>46</i>&nbsp;
-        <i>47</i>&nbsp; public Date getDateTime() {
-        <b class="nc"><i>48</i>&nbsp; return dateTime;</b>
-        <i>49</i>&nbsp; }
-        <i>50</i>&nbsp;
-        <i>51</i>&nbsp; public void setDateTime(Date dateTime) {
-        <b class="nc"><i>52</i>&nbsp; this.dateTime = dateTime;</b>
-        <b class="nc"><i>53</i>&nbsp; }</b>
-        <i>54</i>&nbsp;
-        <i>55</i>&nbsp; public String getTemperature() {
-        <b class="fc"><i>56</i>&nbsp; return temperature;</b>
-        <i>57</i>&nbsp; }
-        <i>58</i>&nbsp;
-        <i>59</i>&nbsp; public void setTemperature(String temperature) {
-        <b class="fc"><i>60</i>&nbsp; this.temperature = temperature;</b>
-        <b class="fc"><i>61</i>&nbsp; }</b>
-        <i>62</i>&nbsp;
-        <i>63</i>&nbsp; public String getStationName() {
-        <b class="fc"><i>64</i>&nbsp; return stationName;</b>
-        <i>65</i>&nbsp; }
-        <i>66</i>&nbsp;
-        <i>67</i>&nbsp; public void setStationName(String stationName) {
-        <b class="fc"><i>68</i>&nbsp; this.stationName = stationName;</b>
-        <b class="fc"><i>69</i>&nbsp; }</b>
-        <i>70</i>&nbsp;}
+        <b class="nc"><i>43</i>&nbsp; public WeatherObservation() {</b>
+        <b class="nc"><i>44</i>&nbsp; }</b>
+        <i>45</i>&nbsp;
+        <i>46</i>&nbsp; public double getLng() {
+        <b class="fc"><i>47</i>&nbsp; return lng;</b>
+        <i>48</i>&nbsp; }
+        <i>49</i>&nbsp;
+        <i>50</i>&nbsp; public double getLat() {
+        <b class="fc"><i>51</i>&nbsp; return lat;</b>
+        <i>52</i>&nbsp; }
+        <i>53</i>&nbsp;
+        <i>54</i>&nbsp; public Date getDateTime() {
+        <b class="nc"><i>55</i>&nbsp; return dateTime;</b>
+        <i>56</i>&nbsp; }
+        <i>57</i>&nbsp;
+        <i>58</i>&nbsp; public String getTemperature() {
+        <b class="fc"><i>59</i>&nbsp; return temperature;</b>
+        <i>60</i>&nbsp; }
+        <i>61</i>&nbsp;
+        <i>62</i>&nbsp; public String getStationName() {
+        <b class="fc"><i>63</i>&nbsp; return stationName;</b>
+        <i>64</i>&nbsp; }
+        <i>65</i>&nbsp;
+        <b class="fc"><i>66</i>&nbsp; public static final class Builder {</b>
+        <i>67</i>&nbsp; private double lng;
+        <i>68</i>&nbsp; private double lat;
+        <i>69</i>&nbsp; private Date dateTime;
+        <i>70</i>&nbsp; private String temperature;
+        <i>71</i>&nbsp; private String stationName;
+        <i>72</i>&nbsp;
+        <b class="fc"><i>73</i>&nbsp; public Builder() {</b>
+        <b class="fc"><i>74</i>&nbsp; }</b>
+        <i>75</i>&nbsp;
+        <i>76</i>&nbsp; public Builder lng(double val) {
+        <b class="fc"><i>77</i>&nbsp; lng = val;</b>
+        <b class="fc"><i>78</i>&nbsp; return this;</b>
+        <i>79</i>&nbsp; }
+        <i>80</i>&nbsp;
+        <i>81</i>&nbsp; public Builder lat(double val) {
+        <b class="fc"><i>82</i>&nbsp; lat = val;</b>
+        <b class="fc"><i>83</i>&nbsp; return this;</b>
+        <i>84</i>&nbsp; }
+        <i>85</i>&nbsp;
+        <i>86</i>&nbsp; public Builder dateTime(Date val) {
+        <b class="nc"><i>87</i>&nbsp; dateTime = val;</b>
+        <b class="nc"><i>88</i>&nbsp; return this;</b>
+        <i>89</i>&nbsp; }
+        <i>90</i>&nbsp;
+        <i>91</i>&nbsp; public Builder temperature(String val) {
+        <b class="fc"><i>92</i>&nbsp; temperature = val;</b>
+        <b class="fc"><i>93</i>&nbsp; return this;</b>
+        <i>94</i>&nbsp; }
+        <i>95</i>&nbsp;
+        <i>96</i>&nbsp; public Builder stationName(String val) {
+        <b class="fc"><i>97</i>&nbsp; stationName = val;</b>
+        <b class="fc"><i>98</i>&nbsp; return this;</b>
+        <i>99</i>&nbsp; }
+        <i>100</i>&nbsp;
+        <i>101</i>&nbsp; public WeatherObservation build() {
+        <b class="fc"><i>102</i>&nbsp; return new WeatherObservation(this);</b>
+        <i>103</i>&nbsp; }
+        <i>104</i>&nbsp; }
+        <i>105</i>&nbsp;}
     </div>
 </div>
 
 <div class="footer">
 
-    <div style="float:right;">generated on 2019-01-16 21:13</div>
+    <div style="float:right;">generated on 2019-01-18 11:44</div>
 </div>
 </body>
 </html>

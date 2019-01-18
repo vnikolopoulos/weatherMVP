@@ -55,10 +55,10 @@
             </td>
             <td class="coverageStat">
   <span class="percent">
-    63.6%
+    58.3%
   </span>
                 <span class="absValue">
-    (7/ 11)
+    (7/ 12)
   </span>
             </td>
         </tr>
@@ -74,47 +74,43 @@
         <i>3</i>&nbsp;import java.util.HashMap;
         <i>4</i>&nbsp;import java.util.Map;
         <i>5</i>&nbsp;
-        <i>6</i>&nbsp;public class TemperatureReport {
-        <i>7</i>&nbsp; String countryName;
-        <i>8</i>&nbsp;
-        <i>9</i>&nbsp; //Station Name -&gt; temperature
-        <i>10</i>&nbsp; Map&lt;String, String&gt; currentTemperature;
-        <i>11</i>&nbsp;
-        <b class="fc"><i>12</i>&nbsp; public TemperatureReport(String countryName) {</b>
-        <b class="fc"><i>13</i>&nbsp; this.countryName = countryName;</b>
-        <b class="fc"><i>14</i>&nbsp; this.currentTemperature = new HashMap&lt;&gt;();</b>
-        <b class="fc"><i>15</i>&nbsp; }</b>
-        <i>16</i>&nbsp;
-        <i>17</i>&nbsp; public String getCountryName() {
-        <b class="fc"><i>18</i>&nbsp; return countryName;</b>
-        <i>19</i>&nbsp; }
+        <i>6</i>&nbsp;/**
+        <i>7</i>&nbsp; * Temperature report is the return object of weather application. Contains the country name
+        <i>8</i>&nbsp; * and the observed temperatures at the various weather stations.
+        <i>9</i>&nbsp; */
+        <i>10</i>&nbsp;public class TemperatureReport {
+        <i>11</i>&nbsp; String countryName;
+        <i>12</i>&nbsp;
+        <i>13</i>&nbsp; //Station Name -&gt; temperature
+        <i>14</i>&nbsp; Map&lt;String, String&gt; currentTemperature;
+        <i>15</i>&nbsp;
+        <b class="fc"><i>16</i>&nbsp; public TemperatureReport(String countryName) {</b>
+        <b class="fc"><i>17</i>&nbsp; this.countryName = countryName;</b>
+        <b class="fc"><i>18</i>&nbsp; this.currentTemperature = new HashMap&lt;&gt;();</b>
+        <b class="fc"><i>19</i>&nbsp; }</b>
         <i>20</i>&nbsp;
-        <i>21</i>&nbsp; public void setCountryName(String countryName) {
-        <b class="nc"><i>22</i>&nbsp; countryName = countryName;</b>
-        <b class="nc"><i>23</i>&nbsp; }</b>
+        <i>21</i>&nbsp; public String getCountryName() {
+        <b class="fc"><i>22</i>&nbsp; return countryName;</b>
+        <i>23</i>&nbsp; }
         <i>24</i>&nbsp;
         <i>25</i>&nbsp; public Map&lt;String, String&gt; getCurrentTemperature() {
         <b class="fc"><i>26</i>&nbsp; return currentTemperature;</b>
-        <i>27</i>&nbsp; }
+        <b class="nc"><i>27</i>&nbsp; }</b>
         <i>28</i>&nbsp;
-        <i>29</i>&nbsp; public void setCurrentTemperature(Map&lt;String, String&gt; currentTemperature) {
-        <b class="nc"><i>30</i>&nbsp; this.currentTemperature = currentTemperature;</b>
-        <b class="nc"><i>31</i>&nbsp; }</b>
-        <i>32</i>&nbsp;
-        <i>33</i>&nbsp; @Override
-        <i>34</i>&nbsp; public String toString() {
-        <b class="fc"><i>35</i>&nbsp; return &quot;TemperatureReport{&quot; +</b>
-        <i>36</i>&nbsp; &quot;countryName=&#39;&quot; + countryName + &#39;\&#39;&#39; +
-        <i>37</i>&nbsp; &quot;, currentTemperature=&quot; + currentTemperature +
-        <i>38</i>&nbsp; &#39;}&#39;;
-        <i>39</i>&nbsp; }
-        <i>40</i>&nbsp;}
+        <i>29</i>&nbsp; @Override
+        <b class="nc"><i>30</i>&nbsp; public String toString() {</b>
+        <b class="fc"><i>31</i>&nbsp; return &quot;TemperatureReport{&quot; +</b>
+        <i>32</i>&nbsp; &quot;countryName=&#39;&quot; + countryName + &#39;\&#39;&#39; +
+        <i>33</i>&nbsp; &quot;, currentTemperature=&quot; + currentTemperature +
+        <b class="nc"><i>34</i>&nbsp; &#39;}&#39;;</b>
+        <b class="nc"><i>35</i>&nbsp; }</b>
+        <i>36</i>&nbsp;}
     </div>
 </div>
 
 <div class="footer">
 
-    <div style="float:right;">generated on 2019-01-16 21:13</div>
+    <div style="float:right;">generated on 2019-01-18 11:44</div>
 </div>
 </body>
 </html>

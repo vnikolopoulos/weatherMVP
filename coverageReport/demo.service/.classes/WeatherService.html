@@ -44,33 +44,36 @@
             </td>
             <td class="coverageStat">
   <span class="percent">
-    97.7%
+    97.9%
   </span>
                 <span class="absValue">
-    (42/ 43)
+    (47/ 48)
   </span>
             </td>
         </tr>
         <tr>
-            <td class="name">WeatherService$$EnhancerBySpringCGLIB$$460f8c00</td>
+            <td class="name">WeatherService$$EnhancerBySpringCGLIB$$264b1f86</td>
         </tr>
         <tr>
-            <td class="name">WeatherService$MockitoMock$1291996445</td>
+            <td class="name">WeatherService$$EnhancerBySpringCGLIB$$c64b1f38</td>
         </tr>
         <tr>
-            <td class="name">WeatherService$MockitoMock$1291996445$auxiliary$0C7cy9sQ</td>
+            <td class="name">WeatherService$MockitoMock$923496485</td>
         </tr>
         <tr>
-            <td class="name">WeatherService$MockitoMock$1291996445$auxiliary$D0yKjb1v</td>
+            <td class="name">WeatherService$MockitoMock$923496485$auxiliary$0d2vVxWM</td>
         </tr>
         <tr>
-            <td class="name">WeatherService$MockitoMock$1291996445$auxiliary$mLM0aMpc</td>
+            <td class="name">WeatherService$MockitoMock$923496485$auxiliary$f4n1EkzO</td>
         </tr>
         <tr>
-            <td class="name">WeatherService$MockitoMock$1291996445$auxiliary$PJlxHeRf</td>
+            <td class="name">WeatherService$MockitoMock$923496485$auxiliary$GktkGX56</td>
         </tr>
         <tr>
-            <td class="name">WeatherService$MockitoMock$1291996445$auxiliary$YqbJjOZS</td>
+            <td class="name">WeatherService$MockitoMock$923496485$auxiliary$r4WYZolo</td>
+        </tr>
+        <tr>
+            <td class="name">WeatherService$MockitoMock$923496485$auxiliary$VZAejGaM</td>
         </tr>
         <tr>
             <td class="name"><strong>total</strong></td>
@@ -84,10 +87,10 @@
             </td>
             <td class="coverageStat">
   <span class="percent">
-    97.7%
+    97.9%
   </span>
                 <span class="absValue">
-    (42/ 43)
+    (47/ 48)
   </span>
             </td>
         </tr>
@@ -113,139 +116,143 @@
         <i>14</i>&nbsp;
         <i>15</i>&nbsp;import java.util.List;
         <i>16</i>&nbsp;
-        <i>17</i>&nbsp;@Service
-        <i>18</i>&nbsp;@CacheConfig(cacheNames={&quot;weather&quot;})
-        <b class="fc"><i>19</i>&nbsp;public class WeatherService {</b>
-        <i>20</i>&nbsp;
-        <i>21</i>&nbsp; @Autowired
-        <i>22</i>&nbsp; GeonamesService geonamesService;
+        <i>17</i>&nbsp;/**
+        <i>18</i>&nbsp; * Main application service, used geonamesService to find the country&#39;s bounding box, then
+        the
+        <i>19</i>&nbsp; * cities and the weather stations in this box and finally finds the weather stations that are
+        <i>20</i>&nbsp; * actually in the country based on the closest city.
+        <i>21</i>&nbsp; */
+        <b class="fc"><i>22</i>&nbsp;@Service @CacheConfig(cacheNames = {&quot;weather&quot;}) public class
+            WeatherService {</b>
         <i>23</i>&nbsp;
-        <b class="fc"><i>24</i>&nbsp; private static final Logger log =
-            LoggerFactory.getLogger(WeatherService.class);</b>
+        <i>24</i>&nbsp; @Autowired GeonamesService geonamesService;
         <i>25</i>&nbsp;
-        <i>26</i>&nbsp; /**
-        <i>27</i>&nbsp; * For the requested country, finds the boundary box, all the weather observations stations and
+        <b class="fc"><i>26</i>&nbsp; private static final Logger log =
+            LoggerFactory.getLogger(WeatherService.class);</b>
+        <i>27</i>&nbsp;
+        <i>28</i>&nbsp; /**
+        <i>29</i>&nbsp; * For the requested country, finds the boundary box, all the weather observations stations and
         the cities in the box.
-        <i>28</i>&nbsp; * Then defines the weather observation country as: The country of the city that is closest to
+        <i>30</i>&nbsp; * Then defines the weather observation country as: The country of the city that is closest to
         the station.
-        <i>29</i>&nbsp; *
-        <i>30</i>&nbsp; * @param id The country id in ISO 3166-1 alpha-2 country code format
-        <i>31</i>&nbsp; * @return
-        <i>32</i>&nbsp; */
-        <i>33</i>&nbsp; @Cacheable
-        <i>34</i>&nbsp; public TemperatureReport getTemperatureForCountry(String id) {
-        <i>35</i>&nbsp;
-        <b class="fc"><i>36</i>&nbsp; CountryInfo countryInfo = geonamesService.getCountryInfo(id);</b>
-        <b class="fc"><i>37</i>&nbsp; if (countryInfo == null){</b>
-        <b class="nc"><i>38</i>&nbsp; throw new CountryNotFoundException(&quot;Country &quot; + id + &quot; not found&quot;);</b>
-        <i>39</i>&nbsp; }
-        <b class="fc"><i>40</i>&nbsp; TemperatureReport temperatureReport = new
+        <i>31</i>&nbsp; *
+        <i>32</i>&nbsp; * @param id The country id in ISO 3166-1 alpha-2 country code format
+        <i>33</i>&nbsp; * @return
+        <i>34</i>&nbsp; */
+        <i>35</i>&nbsp; @Cacheable public TemperatureReport getTemperatureForCountry(String id) {
+        <i>36</i>&nbsp;
+        <b class="fc"><i>37</i>&nbsp; CountryInfo countryInfo = geonamesService.getCountryInfo(id);</b>
+        <b class="fc"><i>38</i>&nbsp; if (countryInfo == null) {</b>
+        <b class="nc"><i>39</i>&nbsp; throw new CountryNotFoundException(&quot;Country &quot; + id + &quot; not found&quot;);</b>
+        <i>40</i>&nbsp; }
+        <b class="fc"><i>41</i>&nbsp; TemperatureReport temperatureReport = new
             TemperatureReport(countryInfo.getCountryName());</b>
-        <i>41</i>&nbsp;
-        <b class="fc"><i>42</i>&nbsp; List&lt;WeatherObservation&gt; weatherObservationsInCountryBoundaryBox =
-            geonamesService.getWeatherObservationsInBox(</b>
-        <b class="fc"><i>43</i>&nbsp; countryInfo.getNorth(), countryInfo.getSouth(), countryInfo.getEast(),
-            countryInfo.getWest());</b>
-        <i>44</i>&nbsp;
-        <b class="fc"><i>45</i>&nbsp; if (weatherObservationsInCountryBoundaryBox == null ||
-            weatherObservationsInCountryBoundaryBox.isEmpty()){</b>
-        <b class="fc"><i>46</i>&nbsp; return temperatureReport;</b>
-        <i>47</i>&nbsp; }
-        <i>48</i>&nbsp;
-        <i>49</i>&nbsp; // These are the cities in the country&#39;s boundary box. There are not necessarily all in the
+        <i>42</i>&nbsp;
+        <b class="fc"><i>43</i>&nbsp; List&lt;WeatherObservation&gt; weatherObservationsInCountryBoundaryBox =
+            geonamesService</b>
+        <b class="fc"><i>44</i>&nbsp; .getWeatherObservationsInBox(countryInfo.getNorth(), countryInfo.getSouth(),</b>
+        <b class="fc"><i>45</i>&nbsp; countryInfo.getEast(), countryInfo.getWest());</b>
+        <i>46</i>&nbsp;
+        <b class="fc"><i>47</i>&nbsp; if (weatherObservationsInCountryBoundaryBox == null</b>
+        <b class="fc"><i>48</i>&nbsp; || weatherObservationsInCountryBoundaryBox.isEmpty()) {</b>
+        <b class="fc"><i>49</i>&nbsp; return temperatureReport;</b>
+        <i>50</i>&nbsp; }
+        <i>51</i>&nbsp;
+        <i>52</i>&nbsp; // These are the cities in the country&#39;s boundary box. There are not necessarily all in the
         country.
-        <i>50</i>&nbsp; // The country&#39;s borders are probably tighter.
-        <b class="fc"><i>51</i>&nbsp; List&lt;City&gt; citiesInCountryBoundaryBox =
-            geonamesService.getCitiesInBox(countryInfo.getNorth(),</b>
-        <b class="fc"><i>52</i>&nbsp; countryInfo.getSouth(), countryInfo.getEast(), countryInfo.getWest());</b>
-        <i>53</i>&nbsp;
-        <i>54</i>&nbsp; //Find all weather observation stations for which the closest city is in the requested country
+        <i>53</i>&nbsp; // The country&#39;s borders are probably tighter.
+        <b class="fc"><i>54</i>&nbsp; List&lt;City&gt; citiesInCountryBoundaryBox = geonamesService</b>
+        <b class="fc"><i>55</i>&nbsp; .getCitiesInBox(countryInfo.getNorth(), countryInfo.getSouth(),
+            countryInfo.getEast(),</b>
+        <b class="fc"><i>56</i>&nbsp; countryInfo.getWest());</b>
+        <i>57</i>&nbsp;
+        <i>58</i>&nbsp; //Find all weather observation stations for which the closest city is in the requested country
         and add them to the report
-        <i>55</i>&nbsp; //If there are no cities in the boundary box, return all observation stations
-        <b class="fc"><i>56</i>&nbsp; for (WeatherObservation weatherObservation :
-            weatherObservationsInCountryBoundaryBox){</b>
-        <b class="fc"><i>57</i>&nbsp; if (citiesInCountryBoundaryBox == null || citiesInCountryBoundaryBox.isEmpty()</b>
-        <b class="fc"><i>58</i>&nbsp; ||closestCity(weatherObservation.getLat(),weatherObservation.getLng(),
-            citiesInCountryBoundaryBox)</b>
-        <b class="fc"><i>59</i>&nbsp; .getCountryCode().equalsIgnoreCase(id)){</b>
-        <b class="fc"><i>60</i>&nbsp; temperatureReport.getCurrentTemperature().put(weatherObservation.getStationName(),
+        <i>59</i>&nbsp; //If there are no cities in the boundary box, return all observation stations
+        <b class="fc"><i>60</i>&nbsp; for (WeatherObservation weatherObservation :
+            weatherObservationsInCountryBoundaryBox) {</b>
+        <b class="fc"><i>61</i>&nbsp; if (citiesInCountryBoundaryBox == null || citiesInCountryBoundaryBox.isEmpty()</b>
+        <b class="fc"><i>62</i>&nbsp; || closestCity(weatherObservation.getLat(), weatherObservation.getLng(),</b>
+        <b class="fc"><i>63</i>&nbsp; citiesInCountryBoundaryBox).getCountryCode().equalsIgnoreCase(id)) {</b>
+        <b class="fc"><i>64</i>&nbsp; temperatureReport.getCurrentTemperature()</b>
+        <b class="fc"><i>65</i>&nbsp; .put(weatherObservation.getStationName(),
             weatherObservation.getTemperature());</b>
-        <i>61</i>&nbsp; }
-        <b class="fc"><i>62</i>&nbsp; }</b>
-        <i>63</i>&nbsp;
-        <b class="fc"><i>64</i>&nbsp; if (citiesInCountryBoundaryBox != null)</b>
-        <b class="fc"><i>65</i>&nbsp; log.debug(citiesInCountryBoundaryBox.toString());</b>
-        <b class="fc"><i>66</i>&nbsp; if (weatherObservationsInCountryBoundaryBox != null)</b>
-        <b class="fc"><i>67</i>&nbsp; log.debug(weatherObservationsInCountryBoundaryBox.toString());</b>
-        <b class="fc"><i>68</i>&nbsp; log.debug(temperatureReport.toString());</b>
-        <i>69</i>&nbsp;
-        <b class="fc"><i>70</i>&nbsp; return temperatureReport;</b>
-        <i>71</i>&nbsp; }
-        <i>72</i>&nbsp;
-        <i>73</i>&nbsp; /**
-        <i>74</i>&nbsp; * Find the closest city to a point defined by latitude and longitude currently using exhaustive
+        <i>66</i>&nbsp; }
+        <b class="fc"><i>67</i>&nbsp; }</b>
+        <i>68</i>&nbsp;
+        <b class="fc"><i>69</i>&nbsp; if (citiesInCountryBoundaryBox != null)</b>
+        <b class="fc"><i>70</i>&nbsp; log.debug(citiesInCountryBoundaryBox.toString());</b>
+        <b class="fc"><i>71</i>&nbsp; if (weatherObservationsInCountryBoundaryBox != null)</b>
+        <b class="fc"><i>72</i>&nbsp; log.debug(weatherObservationsInCountryBoundaryBox.toString());</b>
+        <b class="fc"><i>73</i>&nbsp; log.debug(temperatureReport.toString());</b>
+        <i>74</i>&nbsp;
+        <b class="fc"><i>75</i>&nbsp; return temperatureReport;</b>
+        <i>76</i>&nbsp; }
+        <i>77</i>&nbsp;
+        <i>78</i>&nbsp; /**
+        <i>79</i>&nbsp; * Find the closest city to a point defined by latitude and longitude currently using exhaustive
         search
-        <i>75</i>&nbsp; * @param lat
-        <i>76</i>&nbsp; * @param lng
-        <i>77</i>&nbsp; * @param cities
-        <i>78</i>&nbsp; * @return
-        <i>79</i>&nbsp; */
-        <i>80</i>&nbsp; protected City closestCity(double lat, double lng, List&lt;City&gt; cities){
-        <b class="fc"><i>81</i>&nbsp; City closestCity = null;</b>
-        <b class="fc"><i>82</i>&nbsp; double distance = 0;</b>
-        <b class="fc"><i>83</i>&nbsp; for (City city : cities){</b>
-        <b class="fc"><i>84</i>&nbsp; if (closestCity==null || distance(lat, city.getLat(), lng, city.getLng(), 0.0,0.0)
-            &lt; distance){</b>
-        <b class="fc"><i>85</i>&nbsp; closestCity = city;</b>
-        <b class="fc"><i>86</i>&nbsp; distance = distance(lat, city.getLat(), lng, city.getLng(), 0.0,0.0);</b>
-        <i>87</i>&nbsp; }
-        <b class="fc"><i>88</i>&nbsp; }</b>
-        <b class="fc"><i>89</i>&nbsp; return closestCity;</b>
-        <i>90</i>&nbsp; }
-        <i>91</i>&nbsp;
-        <i>92</i>&nbsp;
-        <i>93</i>&nbsp;
-        <i>94</i>&nbsp;
-        <i>95</i>&nbsp; /**
-        <i>96</i>&nbsp; * Calculate distance between two points in latitude and longitude taking
-        <i>97</i>&nbsp; * into account height difference. If you are not interested in height
-        <i>98</i>&nbsp; * difference pass 0.0. Uses Haversine method as its base.
-        <i>99</i>&nbsp; *
-        <i>100</i>&nbsp; *
+        <i>80</i>&nbsp; *
+        <i>81</i>&nbsp; * @param lat
+        <i>82</i>&nbsp; * @param lng
+        <i>83</i>&nbsp; * @param cities
+        <i>84</i>&nbsp; * @return
+        <i>85</i>&nbsp; */
+        <i>86</i>&nbsp; protected City closestCity(double lat, double lng, List&lt;City&gt; cities) {
+        <b class="fc"><i>87</i>&nbsp; City closestCity = null;</b>
+        <b class="fc"><i>88</i>&nbsp; double distance = 0;</b>
+        <b class="fc"><i>89</i>&nbsp; for (City city : cities) {</b>
+        <b class="fc"><i>90</i>&nbsp; if (closestCity == null</b>
+        <b class="fc"><i>91</i>&nbsp; || distance(lat, city.getLat(), lng, city.getLng(), 0.0, 0.0) &lt; distance) {</b>
+        <b class="fc"><i>92</i>&nbsp; closestCity = city;</b>
+        <b class="fc"><i>93</i>&nbsp; distance = distance(lat, city.getLat(), lng, city.getLng(), 0.0, 0.0);</b>
+        <i>94</i>&nbsp; }
+        <b class="fc"><i>95</i>&nbsp; }</b>
+        <b class="fc"><i>96</i>&nbsp; return closestCity;</b>
+        <i>97</i>&nbsp; }
+        <i>98</i>&nbsp;
+        <i>99</i>&nbsp;
+        <i>100</i>&nbsp; /**
+        <i>101</i>&nbsp; * Calculate distance between two points in latitude and longitude taking
+        <i>102</i>&nbsp; * into account height difference. If you are not interested in height
+        <i>103</i>&nbsp; * difference pass 0.0. Uses Haversine method as its base.
+        <i>104</i>&nbsp; * &lt;p&gt;
+        <i>105</i>&nbsp; *
         https://stackoverflow.com/questions/3694380/calculating-distance-between-two-points-using-latitude-longitude-what-am-i-doi
-        <i>101</i>&nbsp; *
-        <i>102</i>&nbsp; * lat1, lon1 Start point lat2, lon2 End point el1 Start altitude in meters
-        <i>103</i>&nbsp; * el2 End altitude in meters
-        <i>104</i>&nbsp; * @returns Distance in Meters
-        <i>105</i>&nbsp; */
-        <i>106</i>&nbsp; protected double distance(double lat1, double lat2, double lon1,
-        <i>107</i>&nbsp; double lon2, double el1, double el2) {
-        <i>108</i>&nbsp;
-        <b class="fc"><i>109</i>&nbsp; final int R = 6371; // Radius of the earth</b>
-        <i>110</i>&nbsp;
-        <b class="fc"><i>111</i>&nbsp; double latDistance = Math.toRadians(lat2 - lat1);</b>
-        <b class="fc"><i>112</i>&nbsp; double lonDistance = Math.toRadians(lon2 - lon1);</b>
-        <b class="fc"><i>113</i>&nbsp; double a = Math.sin(latDistance / 2) * Math.sin(latDistance / 2)</b>
-        <b class="fc"><i>114</i>&nbsp; + Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2))</b>
-        <b class="fc"><i>115</i>&nbsp; * Math.sin(lonDistance / 2) * Math.sin(lonDistance / 2);</b>
-        <b class="fc"><i>116</i>&nbsp; double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));</b>
-        <b class="fc"><i>117</i>&nbsp; double distance = R * c * 1000; // convert to meters</b>
-        <i>118</i>&nbsp;
-        <b class="fc"><i>119</i>&nbsp; double height = el1 - el2;</b>
-        <i>120</i>&nbsp;
-        <b class="fc"><i>121</i>&nbsp; distance = Math.pow(distance, 2) + Math.pow(height, 2);</b>
-        <i>122</i>&nbsp;
-        <b class="fc"><i>123</i>&nbsp; return Math.sqrt(distance);</b>
-        <i>124</i>&nbsp; }
-        <i>125</i>&nbsp;
+        <i>106</i>&nbsp; * &lt;p&gt;
+        <i>107</i>&nbsp; * lat1, lon1 Start point lat2, lon2 End point el1 Start altitude in meters
+        <i>108</i>&nbsp; * el2 End altitude in meters
+        <i>109</i>&nbsp; *
+        <i>110</i>&nbsp; * @returns Distance in Meters
+        <i>111</i>&nbsp; */
+        <i>112</i>&nbsp; protected double distance(double lat1, double lat2, double lon1, double lon2, double el1,
+        <i>113</i>&nbsp; double el2) {
+        <i>114</i>&nbsp;
+        <b class="fc"><i>115</i>&nbsp; final int R = 6371; // Radius of the earth</b>
+        <i>116</i>&nbsp;
+        <b class="fc"><i>117</i>&nbsp; double latDistance = Math.toRadians(lat2 - lat1);</b>
+        <b class="fc"><i>118</i>&nbsp; double lonDistance = Math.toRadians(lon2 - lon1);</b>
+        <b class="fc"><i>119</i>&nbsp; double a = Math.sin(latDistance / 2) * Math.sin(latDistance / 2)</b>
+        <b class="fc"><i>120</i>&nbsp; + Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2)) * Math</b>
+        <b class="fc"><i>121</i>&nbsp; .sin(lonDistance / 2) * Math.sin(lonDistance / 2);</b>
+        <b class="fc"><i>122</i>&nbsp; double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));</b>
+        <b class="fc"><i>123</i>&nbsp; double distance = R * c * 1000; // convert to meters</b>
+        <i>124</i>&nbsp;
+        <b class="fc"><i>125</i>&nbsp; double height = el1 - el2;</b>
         <i>126</i>&nbsp;
-        <i>127</i>&nbsp;}
+        <b class="fc"><i>127</i>&nbsp; distance = Math.pow(distance, 2) + Math.pow(height, 2);</b>
+        <i>128</i>&nbsp;
+        <b class="fc"><i>129</i>&nbsp; return Math.sqrt(distance);</b>
+        <i>130</i>&nbsp; }
+        <i>131</i>&nbsp;
+        <i>132</i>&nbsp;
+        <i>133</i>&nbsp;}
     </div>
 </div>
 
 <div class="footer">
 
-    <div style="float:right;">generated on 2019-01-16 21:13</div>
+    <div style="float:right;">generated on 2019-01-18 11:44</div>
 </div>
 </body>
 </html>

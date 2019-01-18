@@ -75,31 +75,34 @@
         <i>4</i>&nbsp;
         <i>5</i>&nbsp;import java.util.List;
         <i>6</i>&nbsp;
-        <i>7</i>&nbsp;@JsonIgnoreProperties(ignoreUnknown = true)
-        <b class="fc"><i>8</i>&nbsp;public class CountryInfoResponse {</b>
-        <i>9</i>&nbsp; List&lt;CountryInfo&gt; geonames;
-        <i>10</i>&nbsp;
-        <i>11</i>&nbsp; public List&lt;CountryInfo&gt; getGeonames() {
-        <b class="fc"><i>12</i>&nbsp; return geonames;</b>
-        <i>13</i>&nbsp; }
-        <i>14</i>&nbsp;
-        <i>15</i>&nbsp; public void setGeonames(List&lt;CountryInfo&gt; geonames) {
-        <b class="fc"><i>16</i>&nbsp; this.geonames = geonames;</b>
-        <b class="fc"><i>17</i>&nbsp; }</b>
-        <i>18</i>&nbsp;
-        <i>19</i>&nbsp; @Override
-        <i>20</i>&nbsp; public String toString() {
-        <b class="fc"><i>21</i>&nbsp; return &quot;CountryInfoResponse{&quot; +</b>
-        <i>22</i>&nbsp; &quot;geonames=&quot; + geonames +
-        <i>23</i>&nbsp; &#39;}&#39;;
-        <i>24</i>&nbsp; }
-        <i>25</i>&nbsp;}
+        <i>7</i>&nbsp;/**
+        <i>8</i>&nbsp; * CountryInfoResponse models the expected response from geonames.org for country
+        <i>9</i>&nbsp; */
+        <i>10</i>&nbsp;@JsonIgnoreProperties(ignoreUnknown = true)
+        <b class="fc"><i>11</i>&nbsp;public class CountryInfoResponse {</b>
+        <i>12</i>&nbsp; List&lt;CountryInfo&gt; geonames;
+        <i>13</i>&nbsp;
+        <i>14</i>&nbsp; public List&lt;CountryInfo&gt; getGeonames() {
+        <b class="fc"><i>15</i>&nbsp; return geonames;</b>
+        <i>16</i>&nbsp; }
+        <i>17</i>&nbsp;
+        <i>18</i>&nbsp; public void setGeonames(List&lt;CountryInfo&gt; geonames) {
+        <b class="fc"><i>19</i>&nbsp; this.geonames = geonames;</b>
+        <b class="fc"><i>20</i>&nbsp; }</b>
+        <i>21</i>&nbsp;
+        <i>22</i>&nbsp; @Override
+        <i>23</i>&nbsp; public String toString() {
+        <b class="fc"><i>24</i>&nbsp; return &quot;CountryInfoResponse{&quot; +</b>
+        <i>25</i>&nbsp; &quot;geonames=&quot; + geonames +
+        <i>26</i>&nbsp; &#39;}&#39;;
+        <i>27</i>&nbsp; }
+        <i>28</i>&nbsp;}
     </div>
 </div>
 
 <div class="footer">
 
-    <div style="float:right;">generated on 2019-01-16 21:13</div>
+    <div style="float:right;">generated on 2019-01-18 11:44</div>
 </div>
 </body>
 </html>

@@ -74,23 +74,28 @@
         <i>3</i>&nbsp;import org.springframework.http.HttpStatus;
         <i>4</i>&nbsp;import org.springframework.web.bind.annotation.ResponseStatus;
         <i>5</i>&nbsp;
-        <i>6</i>&nbsp;@ResponseStatus(value = HttpStatus.NOT_FOUND)
-        <i>7</i>&nbsp;public class CountryNotFoundException extends RuntimeException {
-        <i>8</i>&nbsp; public CountryNotFoundException(String error) {
-        <b class="fc"><i>9</i>&nbsp; super(error);</b>
-        <b class="fc"><i>10</i>&nbsp; }</b>
-        <i>11</i>&nbsp;
-        <i>12</i>&nbsp; @Override
-        <i>13</i>&nbsp; public synchronized Throwable fillInStackTrace() {
-        <b class="fc"><i>14</i>&nbsp; return this;</b>
-        <i>15</i>&nbsp; }
-        <i>16</i>&nbsp;}
+        <i>6</i>&nbsp;/**
+        <i>7</i>&nbsp; * Country not found exception is thrown when the country code in not valid or
+        <i>8</i>&nbsp; * not found by the service.
+        <i>9</i>&nbsp; */
+        <i>10</i>&nbsp;@ResponseStatus(value = HttpStatus.NOT_FOUND)
+        <i>11</i>&nbsp;public class CountryNotFoundException extends RuntimeException {
+        <i>12</i>&nbsp; public CountryNotFoundException(String error) {
+        <b class="fc"><i>13</i>&nbsp; super(error);</b>
+        <b class="fc"><i>14</i>&nbsp; }</b>
+        <i>15</i>&nbsp;
+        <i>16</i>&nbsp; // Override the default fillInStackTrace to hide the stack trace from the client.
+        <i>17</i>&nbsp; @Override
+        <i>18</i>&nbsp; public synchronized Throwable fillInStackTrace() {
+        <b class="fc"><i>19</i>&nbsp; return this;</b>
+        <i>20</i>&nbsp; }
+        <i>21</i>&nbsp;}
     </div>
 </div>
 
 <div class="footer">
 
-    <div style="float:right;">generated on 2019-01-16 21:13</div>
+    <div style="float:right;">generated on 2019-01-18 11:44</div>
 </div>
 </body>
 </html>
